@@ -1,0 +1,9 @@
+//adding to db
+create database fuelcostcalculator;
+CREATE TABLE Users (username VARCHAR(255), password VARCHAR(255), role VARCHAR(255), enabled boolean default true, PRIMARY KEY (username));
+INSERT INTO Users values("admin","password");
+
+//starting kafka
+cd kafka-path
+bin/zookeeper-server-start.sh config/zookeeper.properties
+bin/kafka-server-start.sh config/server.properties
