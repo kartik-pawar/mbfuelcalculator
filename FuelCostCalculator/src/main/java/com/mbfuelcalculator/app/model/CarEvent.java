@@ -6,10 +6,13 @@ import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @RedisHash("CarEvent")
 public class CarEvent implements Serializable{
 
 	@Id
+	@ApiModelProperty(access="hidden", hidden=true)
 	private String username;
 	private boolean fueling;
 	private String city;

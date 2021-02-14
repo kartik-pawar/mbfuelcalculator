@@ -14,6 +14,7 @@ public class Producer {
     @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
 
+    //Kafka producer pushes car events to car_event queue
     public void sendMessage(CarEvent message) {
         this.kafkaTemplate.send(TOPIC, message);
     }

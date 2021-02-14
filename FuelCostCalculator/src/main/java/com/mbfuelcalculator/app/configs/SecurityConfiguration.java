@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
+	//Added a custom authentication service to fetch user from mysql
     @Autowired
     UserDetailsService userDetailsService;
 
@@ -27,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         	.and().authorizeRequests()
         	.antMatchers("/fuelevent").hasRole("USER")
         	.antMatchers("/directfuelevent").hasRole("USER")
-            .antMatchers("/swagger-ui.html").permitAll()
+            .antMatchers("/swagger-ui.html").hasRole("USER")
             .antMatchers("/").permitAll()
             .and().csrf().disable()
             .formLogin();

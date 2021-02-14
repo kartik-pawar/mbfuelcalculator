@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//UserDetails implementation to convert mysql's user to UserDetail object required by authentication manager.
 public class MyUserDetails implements UserDetails {
 
     private String userName;
