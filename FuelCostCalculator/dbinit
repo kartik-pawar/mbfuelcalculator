@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS fuelcostcalculator;
+USE fuelcostcalculator;
+CREATE TABLE IF NOT EXISTS Users (username VARCHAR(255), password VARCHAR(255), role VARCHAR(255), enabled boolean default true, PRIMARY KEY (username));
+INSERT INTO Users values("admin","password") ON DUPLICATE KEY UPDATE;
