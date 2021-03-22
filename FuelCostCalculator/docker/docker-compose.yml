@@ -1,0 +1,33 @@
+version: '3'
+services:
+  fuel-calc:
+    container_name: fuel-calc-service
+    build: ./api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - redis
+      - kafka
+    entrypoint: java -jar /home/mbfuelcalculator/FuelCostCalculator/target/fuelcostcalculator.jar
+  redis:
+    container_name: redis
+    image: redis
+    hostname: redis
+    ports:
+      - "6379:6379"
+  db:
+    image: 'arm64v8/mariadb'
+    container_name: db
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=
+  kafka:
+    build: ./kafka
+    container_name: kafka
+    ports:
+      - "9902:9902"
+    
